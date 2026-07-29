@@ -348,10 +348,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function playMusicWithFadeIn() {
         if (isPlaying) return;
 
-        // Set start position to 29 seconds as requested
-        if (bgAudio.currentTime < 29 || bgAudio.paused) {
-            bgAudio.currentTime = 29;
+        // Start music from the beginning (0:00) as requested
+        if (bgAudio.paused) {
+            bgAudio.currentTime = 0;
         }
+
 
         bgAudio.volume = 0;
         const playPromise = bgAudio.play();

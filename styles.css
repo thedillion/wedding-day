@@ -567,42 +567,50 @@ body::before {
 }
 
 .timer-grid {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.8rem;
-    margin-top: 1.8rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+    margin: 1.8rem auto 0;
+    max-width: 520px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .timer-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 95px;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--color-border);
+    padding: 1.2rem 0.6rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
+    min-width: 0;
 }
 
 .timer-number {
     font-family: var(--font-serif);
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-weight: 300;
     color: var(--color-text-main);
     line-height: 1;
 }
 
 .timer-label {
-    font-size: 0.72rem;
-    letter-spacing: 0.15em;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--color-text-muted);
     margin-top: 0.5rem;
+    white-space: nowrap;
 }
 
 .timer-colon {
-    font-family: var(--font-serif);
-    font-size: 2.8rem;
-    color: var(--color-accent-taupe);
-    margin-bottom: 1.5rem;
+    display: none !important;
 }
+
 
 /* ==========================================================================
    TIMELINE SCHEDULE & VENUE MAP
