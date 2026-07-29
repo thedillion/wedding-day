@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Azamat & Bernora — Nikoh To'yiga Taklifnoma | 23-Avgust 2026</title>
+    <title data-i18n="doc_title">Azamat & Bernora — Nikoh To'yiga Taklifnoma | 23-Avgust 2026</title>
     <meta name="description" content="Azamat va Bernoraning nikoh to'yiga taklifnoma. 23-Avgust 2026-yil, 'Shodlik' To'yxonasi.">
     
     <!-- Google Fonts -->
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
 
@@ -33,14 +33,31 @@
     <!-- Floating Background Sunlight Flare -->
     <div class="sun-flare"></div>
 
-    <!-- Ambient Audio Player Toggle -->
-    <div class="audio-control" id="audioToggle" title="Musiqa">
-        <div class="audio-icon">
-            <i class="fas fa-music"></i>
+    <!-- TOP FLOATING CONTROLS BAR (MUSIC & LANGUAGE SELECTOR) -->
+    <div class="top-controls-bar">
+        <!-- Language Switcher Control -->
+        <div class="lang-control" id="langControl">
+            <div class="lang-btn" id="langBtn" title="Tilni tanlash / Select Language / 언어 선택">
+                <i class="fas fa-globe"></i>
+                <span id="currentLangCode">UZ</span>
+                <i class="fas fa-chevron-down lang-arrow"></i>
+            </div>
+            <div class="lang-dropdown hidden" id="langDropdown">
+                <button class="lang-option active" data-lang="uz">🇺🇿 O'zbekcha</button>
+                <button class="lang-option" data-lang="en">🇬🇧 English</button>
+                <button class="lang-option" data-lang="ko">🇰🇷 한국어</button>
+            </div>
         </div>
-        <span class="audio-text">Musiqa</span>
-        <div class="sound-wave hidden" id="soundWave">
-            <span></span><span></span><span></span>
+
+        <!-- Ambient Audio Player Toggle -->
+        <div class="audio-control" id="audioToggle" title="Musiqa">
+            <div class="audio-icon">
+                <i class="fas fa-music"></i>
+            </div>
+            <span class="audio-text" data-i18n="music_btn">Musiqa</span>
+            <div class="sound-wave hidden" id="soundWave">
+                <span></span><span></span><span></span>
+            </div>
         </div>
     </div>
 
@@ -84,20 +101,20 @@
                     </h1>
 
                     <!-- Invitation Lead Text -->
-                    <p class="invite-lead">
+                    <p class="invite-lead" data-i18n="hero_lead">
                         Sizni nikoh to'yimizga taklif etamiz
                     </p>
 
                     <!-- Date / Time / Location Details -->
                     <div class="event-hero-meta">
-                        <div class="meta-date">23-Avgust 2026-yil</div>
-                        <div class="meta-time">Tantana soat 19:00 da boshlanadi</div>
-                        <div class="meta-location">"SHODLIK" TO'YXONASI</div>
+                        <div class="meta-date" data-i18n="hero_date">23-Avgust 2026-yil</div>
+                        <div class="meta-time" data-i18n="hero_time">Tantana soat 19:00 da boshlanadi</div>
+                        <div class="meta-location" data-i18n="hero_location">"SHODLIK" TO'YXONASI</div>
                     </div>
 
                     <!-- Scroll Indicator -->
                     <a href="#countdown" class="scroll-down-btn" aria-label="Xush kelibsiz">
-                        <span>XUSH KELIBSIZ</span>
+                        <span data-i18n="hero_btn">XUSH KELIBSIZ</span>
                         <i class="fas fa-chevron-down"></i>
                     </a>
                 </article>
@@ -105,37 +122,37 @@
         </section>
 
         <!-- ==========================================================================
-             COUNTDOWN TIMER SECTION (WITH ELEGANT COMPACT LABELS & COLONS)
+             COUNTDOWN TIMER SECTION
              ========================================================================== -->
         <section class="section countdown-section reveal" id="countdown">
             <div class="container text-center">
-                <span class="section-subtitle">Baxtli kunimizgacha qolgan vaqt</span>
+                <span class="section-subtitle" data-i18n="timer_subtitle">Baxtli kunimizgacha qolgan vaqt</span>
                 <div class="timer-grid" id="countdownTimer">
                     <div class="timer-box">
                         <span class="timer-number" id="days">00</span>
-                        <span class="timer-label">KUN<span class="label-en"> / DAYS</span></span>
+                        <span class="timer-label" data-i18n="label_days">KUN</span>
                     </div>
                     <div class="timer-colon">:</div>
                     <div class="timer-box">
                         <span class="timer-number" id="hours">00</span>
-                        <span class="timer-label">SOAT<span class="label-en"> / HOURS</span></span>
+                        <span class="timer-label" data-i18n="label_hours">SOAT</span>
                     </div>
                     <div class="timer-colon">:</div>
                     <div class="timer-box">
                         <span class="timer-number" id="minutes">00</span>
-                        <span class="timer-label">DAQIQA<span class="label-en"> / MINS</span></span>
+                        <span class="timer-label" data-i18n="label_mins">DAQIQA</span>
                     </div>
                     <div class="timer-colon">:</div>
                     <div class="timer-box">
                         <span class="timer-number" id="seconds">00</span>
-                        <span class="timer-label">SONIYA<span class="label-en"> / SECS</span></span>
+                        <span class="timer-label" data-i18n="label_secs">SONIYA</span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================================
-             SECTION 2: WELCOME SECTION (ПРИВЕТСТВИЕ НА УЗБЕКСКОМ)
+             SECTION 2: WELCOME SECTION (ПРИВЕТСТВИЕ)
              ========================================================================== -->
         <section class="section story-section" id="welcome">
             <div class="container grid-2-col align-center reveal">
@@ -145,13 +162,13 @@
                     </div>
                 </div>
                 <div class="story-content">
-                    <span class="section-subtitle">To'yimizga xush kelibsiz</span>
-                    <h2 class="section-title text-left">Sizni nikoh to'yimizda ko'rishdan mamnunmiz!</h2>
-                    <p class="story-quote">"Ikki kalb, bir niyat — abadiy sevgi va baxt yo'li."</p>
-                    <p class="story-text">
+                    <span class="section-subtitle" data-i18n="welcome_subtitle">To'yimizga xush kelibsiz</span>
+                    <h2 class="section-title text-left" data-i18n="welcome_title">Sizni nikoh to'yimizda ko'rishdan mamnunmiz!</h2>
+                    <p class="story-quote" data-i18n="welcome_quote">"Ikki kalb, bir niyat — abadiy sevgi va baxt yo'li."</p>
+                    <p class="story-text" data-i18n="welcome_body">
                         Qadrli va yaqin insonlarimiz! Sizlarni baxtli kunimiz — nikoh to'yimizda ko'rishdan va quvonchimizni birga baham ko'rishdan cheksiz mamnun bo'lamiz. Sizning tashrifingiz biz uchun eng qadrli sovg'adir.
                     </p>
-                    <p class="story-footer">Sizni intiqlik bilan kutib qolamiz!</p>
+                    <p class="story-footer" data-i18n="welcome_footer">Sizni intiqlik bilan kutib qolamiz!</p>
                 </div>
             </div>
         </section>
@@ -163,18 +180,18 @@
             <div class="container">
                 <div class="venue-card-wrapper grid-2-col align-center reveal">
                     <div class="venue-details">
-                        <span class="section-subtitle">Manzil va Joylashuv</span>
-                        <h2 class="section-title text-left">To'y o'tkaziladigan joy / Manzil</h2>
-                        <h3 class="venue-name">"Shodlik" To'yxonasi</h3>
+                        <span class="section-subtitle" data-i18n="location_subtitle">Manzil va Joylashuv</span>
+                        <h2 class="section-title text-left" data-i18n="location_title">To'y o'tkaziladigan joy / Manzil</h2>
+                        <h3 class="venue-name" data-i18n="location_venue_name">"Shodlik" To'yxonasi</h3>
                         <p class="venue-address">
-                            <i class="fas fa-map-marker-alt"></i> "Shodlik" To'yxonasi, Urganch / Xorazm
+                            <i class="fas fa-map-marker-alt"></i> <span data-i18n="location_address">"Shodlik" To'yxonasi, Urganch / Xorazm</span>
                         </p>
-                        <p class="venue-info">
+                        <p class="venue-info" data-i18n="location_info">
                             Muhtasham va shinam to'yxona majmuasi. Barcha mehmonlarimiz uchun qulay avtoturargoh va barcha zaruriy sharoitlar mavjud.
                         </p>
                         <div class="venue-buttons">
                             <a href="https://www.google.com/maps/place/Shodlik/@41.5597446,60.5866261,199m/data=!3m1!1e3!4m6!3m5!1s0x41dfc90032ce7e97:0xc4954acc0810d1e5!8m2!3d41.5597502!4d60.5870968!16s%2Fg%2F11y0bfdw9y" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                                <i class="fas fa-location-arrow"></i> Google Maps / Xaritadan ko'rish
+                                <i class="fas fa-location-arrow"></i> <span data-i18n="location_btn">Google Maps / Xaritadan ko'rish</span>
                             </a>
                         </div>
                     </div>
@@ -192,14 +209,14 @@
         <footer class="footer">
             <div class="container text-center">
                 <h3 class="footer-names">Azamat & Bernora</h3>
-                <p class="footer-date">23-Avgust 2026-yil • "Shodlik" To'yxonasi</p>
-                <p class="footer-copy">Sizni bayramimizda kutib qolamiz!</p>
+                <p class="footer-date" data-i18n="footer_date">23-Avgust 2026-yil • "Shodlik" To'yxonasi</p>
+                <p class="footer-copy" data-i18n="footer_copy">Sizni bayramimizda kutib qolamiz!</p>
             </div>
         </footer>
 
     </div>
 
     <!-- JavaScript -->
-    <script src="script.js"></script>
+    <script src="script.js?v=4"></script>
 </body>
 </html>

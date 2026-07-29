@@ -424,7 +424,161 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ----------------------------------------------------------------------
+    // 8. MULTILINGUAL DICTIONARY & LANGUAGE SWITCHER (UZ, EN, KO)
+    // ----------------------------------------------------------------------
+    const translations = {
+        uz: {
+            doc_title: "Azamat & Bernora — Nikoh To'yiga Taklifnoma | 23-Avgust 2026",
+            music_btn: "Musiqa",
+            hero_lead: "Sizni nikoh to'yimizga taklif etamiz",
+            hero_date: "23-Avgust 2026-yil",
+            hero_time: "Tantana soat 19:00 da boshlanadi",
+            hero_location: "\"SHODLIK\" TO'YXONASI",
+            hero_btn: "XUSH KELIBSIZ",
+            timer_subtitle: "Baxtli kunimizgacha qolgan vaqt",
+            label_days: "KUN",
+            label_hours: "SOAT",
+            label_mins: "DAQIQA",
+            label_secs: "SONIYA",
+            welcome_subtitle: "To'yimizga xush kelibsiz",
+            welcome_title: "Sizni nikoh to'yimizda ko'rishdan mamnunmiz!",
+            welcome_quote: "\"Ikki kalb, bir niyat — abadiy sevgi va baxt yo'li.\"",
+            welcome_body: "Qadrli va yaqin insonlarimiz! Sizlarni baxtli kunimiz — nikoh to'yimizda ko'rishdan va quvonchimizni birga baham ko'rishdan cheksiz mamnun bo'lamiz. Sizning tashrifingiz biz uchun eng qadrli sovg'adir.",
+            welcome_footer: "Sizni intiqlik bilan kutib qolamiz!",
+            location_subtitle: "Manzil va Joylashuv",
+            location_title: "To'y o'tkaziladigan joy / Manzil",
+            location_venue_name: "\"Shodlik\" To'yxonasi",
+            location_address: "\"Shodlik\" To'yxonasi, Urganch / Xorazm",
+            location_info: "Muhtasham va shinam to'yxona majmuasi. Barcha mehmonlarimiz uchun qulay avtoturargoh va barcha zaruriy sharoitlar mavjud.",
+            location_btn: "Google Maps / Xaritadan ko'rish",
+            footer_date: "23-Avgust 2026-yil • \"Shodlik\" To'yxonasi",
+            footer_copy: "Sizni bayramimizda kutib qolamiz!"
+        },
+        en: {
+            doc_title: "Azamat & Bernora — Wedding Invitation | August 23, 2026",
+            music_btn: "Music",
+            hero_lead: "Cordially invite you to celebrate our wedding",
+            hero_date: "August 23, 2026",
+            hero_time: "Celebration begins at 7:00 PM",
+            hero_location: "\"SHODLIK\" WEDDING HALL",
+            hero_btn: "WELCOME",
+            timer_subtitle: "Countdown to Our Special Day",
+            label_days: "DAYS",
+            label_hours: "HOURS",
+            label_mins: "MINS",
+            label_secs: "SECS",
+            welcome_subtitle: "Welcome to Our Wedding",
+            welcome_title: "We are overjoyed to celebrate with you!",
+            welcome_quote: "\"Two hearts, one journey — eternal love and happiness.\"",
+            welcome_body: "Dear family and friends! We are overjoyed to welcome you to our special day as we join our lives together. Your presence is the greatest gift of all.",
+            welcome_footer: "We warmly look forward to seeing you!",
+            location_subtitle: "Location & Venue",
+            location_title: "Wedding Venue & Address",
+            location_venue_name: "\"Shodlik\" Wedding Hall",
+            location_address: "\"Shodlik\" Wedding Hall, Urgench / Khorezm",
+            location_info: "A grand and elegant venue. Ample guest parking and all modern amenities available.",
+            location_btn: "View on Google Maps",
+            footer_date: "August 23, 2026 • \"Shodlik\" Wedding Hall",
+            footer_copy: "We look forward to celebrating together!"
+        },
+        ko: {
+            doc_title: "아자마트 & 베르노라 — 결혼식 초댓장 | 2026년 8월 23일",
+            music_btn: "음악",
+            hero_lead: "저희의 결혼식에 귀하를 정중히 초대합니다",
+            hero_date: "2026년 8월 23일",
+            hero_time: "피로연 시작: 오후 7:00",
+            hero_location: "\"SHODLIK\" (쇼들리크) WEDDING HALL",
+            hero_btn: "환영합니다",
+            timer_subtitle: "소중한 날까지 남은 시간",
+            label_days: "일",
+            label_hours: "시간",
+            label_mins: "분",
+            label_secs: "초",
+            welcome_subtitle: "저희의 결혼식에 오신 것을 환영합니다",
+            welcome_title: "귀한 분들을 모시고 기쁨을 나누고자 합니다",
+            welcome_quote: "\"두 마음이 하나가 되어 시작하는 영원한 사랑의 여정.\"",
+            welcome_body: "사랑하는 가족과 친지, 소중한 분들께! 저희 두 사람이 사랑과 믿음으로 하나가 되는 특별한 날, 함께 자리를 빛내어 주시면 더없는 기쁨이 되겠습니다.",
+            welcome_footer: "귀한 걸음으로 축복해 주시기 바랍니다.",
+            location_subtitle: "오시는 길 & 예식장 안내",
+            location_title: "예식장 위치 및 주소",
+            location_venue_name: "\"Shodlik\" (쇼들리크) Wedding Hall",
+            location_address: "우르겐치 / 호рез름 주, \"Shodlik\" (쇼들리크) 예식장",
+            location_info: "화려하고 편안한 연회장. 편리한 주차 시설과 쾌적한 편의 시설이 완비되어 있습니다.",
+            location_btn: "Google Maps 지도로 보기",
+            footer_date: "2026년 8월 23일 • \"Shodlik\" (쇼들리크) Wedding Hall",
+            footer_copy: "감사하는 마음으로 기쁘게 모시겠습니다."
+        }
+    };
+
+    const langControl = document.getElementById('langControl');
+    const langBtn = document.getElementById('langBtn');
+    const langDropdown = document.getElementById('langDropdown');
+    const currentLangCode = document.getElementById('currentLangCode');
+    const langOptions = document.querySelectorAll('.lang-option');
+
+    function applyLanguage(lang) {
+        if (!translations[lang]) return;
+
+        const langData = translations[lang];
+
+        // Update all data-i18n elements
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (key === 'doc_title') {
+                document.title = langData[key];
+            } else if (langData[key]) {
+                el.innerText = langData[key];
+            }
+        });
+
+        // Update current language label & active classes
+        if (currentLangCode) currentLangCode.innerText = lang.toUpperCase();
+
+        langOptions.forEach(opt => {
+            if (opt.getAttribute('data-lang') === lang) {
+                opt.classList.add('active');
+            } else {
+                opt.classList.remove('active');
+            }
+        });
+
+        // Save preference
+        localStorage.setItem('wedding_lang_pref', lang);
+    }
+
+    // Toggle Dropdown
+    if (langBtn && langDropdown) {
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('hidden');
+            if (langControl) langControl.classList.toggle('open');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (langControl && !langControl.contains(e.target)) {
+                langDropdown.classList.add('hidden');
+                langControl.classList.remove('open');
+            }
+        });
+
+        langOptions.forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const selectedLang = opt.getAttribute('data-lang');
+                applyLanguage(selectedLang);
+                langDropdown.classList.add('hidden');
+                if (langControl) langControl.classList.remove('open');
+            });
+        });
+    }
+
+    // Initialize Language from localStorage or default 'uz'
+    const savedLang = localStorage.getItem('wedding_lang_pref') || 'uz';
+    applyLanguage(savedLang);
 });
+
 
 
 
