@@ -1247,19 +1247,19 @@ html, body {
         padding: 0 0.3rem;
     }
 
-    /* Countdown Timer Section Mobile Fit (Compact Box + Colons) */
+    /* Countdown Timer Section Mobile Fit (Slightly Larger Box & Timer) */
     .countdown-section {
-        padding: 2.2rem 0.6rem;
+        padding: 2.5rem 0.6rem;
     }
 
     .timer-grid {
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        gap: 0.25rem !important;
+        gap: 0.35rem !important;
         width: 100% !important;
-        max-width: 360px !important;
-        margin: 0.8rem auto 0 !important;
+        max-width: 400px !important;
+        margin: 1rem auto 0 !important;
         box-sizing: border-box !important;
     }
 
@@ -1270,25 +1270,25 @@ html, body {
         justify-content: center !important;
         min-width: 0 !important;
         flex: 1 !important;
-        max-width: 68px !important;
-        padding: 0.55rem 0.1rem !important;
-        border-radius: 10px !important;
-        background: rgba(255, 255, 255, 0.8) !important;
+        max-width: 78px !important;
+        padding: 0.7rem 0.2rem !important;
+        border-radius: 12px !important;
+        background: rgba(255, 255, 255, 0.85) !important;
         border: 1px solid var(--color-border) !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
         box-sizing: border-box !important;
         text-align: center !important;
     }
 
     .timer-number {
-        font-size: clamp(1.2rem, 4.5vw, 1.5rem) !important;
+        font-size: clamp(1.4rem, 5vw, 1.85rem) !important;
         line-height: 1 !important;
     }
 
     .timer-label {
-        font-size: 0.58rem !important;
-        letter-spacing: 0.05em !important;
-        margin-top: 0.2rem !important;
+        font-size: 0.62rem !important;
+        letter-spacing: 0.06em !important;
+        margin-top: 0.25rem !important;
         white-space: nowrap !important;
         line-height: 1.2 !important;
     }
@@ -1302,27 +1302,27 @@ html, body {
         align-items: center !important;
         justify-content: center !important;
         font-family: var(--font-serif) !important;
-        font-size: 1.1rem !important;
+        font-size: 1.35rem !important;
         color: var(--color-accent-taupe) !important;
         line-height: 1 !important;
-        margin-bottom: 0.5rem !important;
+        margin-bottom: 0.6rem !important;
         padding: 0 1px !important;
         flex-shrink: 0 !important;
     }
 
-    /* Welcome / Story Section Mobile (Tight Paragraph Margins) */
+    /* Welcome / Story Section Mobile (Slightly Larger Fonts) */
     .story-section {
-        padding: 2.2rem 0.6rem;
+        padding: 2.5rem 0.6rem;
     }
 
     .story-image-wrap {
-        max-width: 280px;
+        max-width: 300px;
         margin: 0 auto;
         width: 100%;
     }
 
     .story-img {
-        height: 240px;
+        height: 250px;
         object-fit: cover;
         border-radius: 14px;
         width: 100%;
@@ -1335,23 +1335,23 @@ html, body {
 
     .story-quote {
         font-family: var(--font-serif);
-        font-size: 0.95rem;
+        font-size: 1.05rem !important;
         font-style: italic;
         color: var(--color-accent-taupe);
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 0.7rem !important;
         line-height: 1.5;
     }
 
     .story-text {
-        font-size: 0.88rem !important;
-        line-height: 1.6 !important;
+        font-size: 0.94rem !important;
+        line-height: 1.65 !important;
         text-align: center !important;
         color: var(--color-text-muted) !important;
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 0.7rem !important;
     }
 
     .story-footer {
-        font-size: 0.9rem !important;
+        font-size: 0.96rem !important;
         font-weight: 500 !important;
         color: var(--color-text-main) !important;
         margin-bottom: 0.6rem !important;
@@ -1359,48 +1359,63 @@ html, body {
         line-height: 1.4;
     }
 
-    /* Venue & Location Section Mobile (Proportional & Compact Card) */
+    /* Venue & Location Section Mobile (LEFT ALIGNED TEXT & COMPACT CARD) */
     .venue-section {
-        padding: 2rem 0.6rem;
+        padding: 2.2rem 0.6rem;
     }
 
     .venue-card-wrapper {
-        padding: 1.4rem 1rem !important;
+        padding: 1.8rem 1.2rem !important;
         border-radius: 16px !important;
-        text-align: center !important;
+        text-align: left !important;
         width: 100% !important;
         box-sizing: border-box !important;
-        background: rgba(252, 250, 246, 0.85) !important;
+        background: rgba(252, 250, 246, 0.88) !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
     }
 
     .venue-details {
-        text-align: center !important;
+        text-align: left !important;
         width: 100% !important;
     }
 
-    .venue-name {
-        font-size: 1.4rem !important;
+    .venue-details .section-subtitle {
+        text-align: left !important;
         margin-bottom: 0.3rem !important;
+    }
+
+    .venue-details .section-title {
+        text-align: left !important;
+        padding: 0 !important;
+        margin-bottom: 0.6rem !important;
+        font-size: clamp(1.4rem, 5vw, 1.85rem) !important;
+    }
+
+    .venue-name {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.4rem !important;
         line-height: 1.25 !important;
+        text-align: left !important;
     }
 
     .venue-address {
-        font-size: 0.85rem !important;
-        justify-content: center !important;
-        margin-bottom: 0.5rem !important;
+        font-size: 0.9rem !important;
+        justify-content: flex-start !important;
+        text-align: left !important;
+        margin-bottom: 0.6rem !important;
         line-height: 1.4 !important;
     }
 
     .venue-info {
-        font-size: 0.88rem !important;
-        line-height: 1.55 !important;
-        margin-bottom: 0.8rem !important;
-        padding: 0 0.2rem !important;
+        font-size: 0.92rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
+        padding: 0 !important;
+        text-align: left !important;
     }
 
     .venue-buttons {
-        justify-content: center !important;
+        justify-content: flex-start !important;
         display: flex !important;
         margin-bottom: 0.8rem !important;
     }
@@ -1410,26 +1425,28 @@ html, body {
         align-items: center !important;
         justify-content: center !important;
         width: 100% !important;
-        max-width: 280px !important;
-        min-height: 44px !important;
-        padding: 0.75rem 1.2rem !important;
-        font-size: 0.75rem !important;
+        max-width: 290px !important;
+        min-height: 46px !important;
+        padding: 0.8rem 1.3rem !important;
+        font-size: 0.78rem !important;
         letter-spacing: 0.08em !important;
         border-radius: 30px !important;
         line-height: 1.4 !important;
+        margin: 0 !important;
     }
 
     .venue-image {
         width: 100% !important;
-        margin-top: 0.4rem !important;
+        margin-top: 0.6rem !important;
     }
 
     .venue-img {
-        height: 200px !important;
-        object-fit: cover !border-radius: 14px !important;
+        height: 210px !important;
+        object-fit: cover !important;
         width: 100% !important;
         border-radius: 14px !important;
     }
+
 
 
     /* Footer Mobile */
