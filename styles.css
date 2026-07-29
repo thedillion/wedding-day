@@ -1197,59 +1197,86 @@ html, body {
         line-height: 1.5;
         margin-bottom: 0.6rem;
         padding: 0 0.2rem;
-    }
-
-    .event-hero-meta {
-        padding: 0.8rem 0.2rem;
+    }    .date-vertical-badge {
+        font-size: 1.35rem;
+        letter-spacing: 0.15em;
         margin-bottom: 1.2rem;
     }
 
+    .couple-names {
+        font-size: clamp(2.3rem, 8.5vw, 3.5rem);
+        line-height: 1.2;
+        margin-bottom: 0.8rem;
+        word-break: break-word;
+    }
+
+    .invite-lead {
+        font-size: 1.02rem;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+        padding: 0 0.2rem;
+        color: #3A3532;
+    }
+
+    .event-hero-meta {
+        padding: 1rem 0.2rem;
+        margin-bottom: 1.4rem;
+    }
+
     .meta-date {
-        font-size: 0.78rem;
-        letter-spacing: 0.12em;
+        font-size: 0.92rem;
+        letter-spacing: 0.14em;
         line-height: 1.4;
         margin-bottom: 0.4rem;
+        font-weight: 600;
+        color: var(--color-text-main);
     }
 
     .meta-time {
-        font-size: 0.88rem;
-        margin: 0.3rem 0;
+        font-size: 1.02rem;
+        margin: 0.35rem 0;
         line-height: 1.4;
+        font-weight: 500;
+        color: var(--color-text-muted);
     }
 
     .meta-location {
-        font-size: 0.7rem;
-        letter-spacing: 0.12em;
+        font-size: 0.82rem;
+        letter-spacing: 0.14em;
         line-height: 1.4;
+        font-weight: 600;
+        color: var(--color-text-main);
     }
 
     .scroll-down-btn {
-        font-size: 0.68rem;
-        padding: 0.5rem 1rem;
+        font-size: 0.78rem;
+        padding: 0.6rem 1.2rem;
         line-height: 1.4;
         margin-bottom: 0.5rem;
     }
 
-    /* Section Subtitle & Titles Mobile (Tight Margins & Line Heights) */
+    /* Section Subtitle & Titles Mobile (Prominent Fonts) */
     .section-subtitle {
-        font-size: 1rem;
+        font-size: 1.15rem;
         text-align: center;
         margin-bottom: 0.4rem;
-        letter-spacing: 0.04em;
+        letter-spacing: 0.05em;
         line-height: 1.4;
+        color: var(--color-accent-taupe);
     }
 
     .section-title {
-        font-size: clamp(1.4rem, 4.8vw, 1.8rem) !important;
+        font-size: clamp(1.55rem, 5.2vw, 2.05rem) !important;
         line-height: 1.3 !important;
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 0.8rem !important;
         text-align: center !important;
         padding: 0 0.3rem;
+        color: var(--color-text-main);
     }
 
-    /* Countdown Timer Section Mobile Fit (Slightly Larger Box & Timer) */
+    /* Countdown Timer Section Mobile Fit (Prominent Box & Numbers) */
     .countdown-section {
-        padding: 2.5rem 0.6rem;
+        padding: 2.6rem 0.6rem;
     }
 
     .timer-grid {
@@ -1258,8 +1285,8 @@ html, body {
         justify-content: center !important;
         gap: 0.35rem !important;
         width: 100% !important;
-        max-width: 400px !important;
-        margin: 1rem auto 0 !important;
+        max-width: 420px !important;
+        margin: 1.1rem auto 0 !important;
         box-sizing: border-box !important;
     }
 
@@ -1270,10 +1297,10 @@ html, body {
         justify-content: center !important;
         min-width: 0 !important;
         flex: 1 !important;
-        max-width: 78px !important;
-        padding: 0.7rem 0.2rem !important;
+        max-width: 82px !important;
+        padding: 0.75rem 0.2rem !important;
         border-radius: 12px !important;
-        background: rgba(255, 255, 255, 0.85) !important;
+        background: rgba(255, 255, 255, 0.88) !important;
         border: 1px solid var(--color-border) !important;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
         box-sizing: border-box !important;
@@ -1281,16 +1308,18 @@ html, body {
     }
 
     .timer-number {
-        font-size: clamp(1.4rem, 5vw, 1.85rem) !important;
+        font-size: clamp(1.5rem, 5.5vw, 2rem) !important;
         line-height: 1 !important;
+        font-weight: 400 !important;
     }
 
     .timer-label {
-        font-size: 0.62rem !important;
+        font-size: 0.68rem !important;
         letter-spacing: 0.06em !important;
-        margin-top: 0.25rem !important;
+        margin-top: 0.3rem !important;
         white-space: nowrap !important;
         line-height: 1.2 !important;
+        font-weight: 600 !important;
     }
 
     .label-en {
@@ -1302,7 +1331,7 @@ html, body {
         align-items: center !important;
         justify-content: center !important;
         font-family: var(--font-serif) !important;
-        font-size: 1.35rem !important;
+        font-size: 1.45rem !important;
         color: var(--color-accent-taupe) !important;
         line-height: 1 !important;
         margin-bottom: 0.6rem !important;
@@ -1310,19 +1339,19 @@ html, body {
         flex-shrink: 0 !important;
     }
 
-    /* Welcome / Story Section Mobile (Slightly Larger Fonts) */
+    /* Welcome / Story Section Mobile (Clear Large Text Blocks) */
     .story-section {
-        padding: 2.5rem 0.6rem;
+        padding: 2.6rem 0.6rem;
     }
 
     .story-image-wrap {
-        max-width: 300px;
+        max-width: 320px;
         margin: 0 auto;
         width: 100%;
     }
 
     .story-img {
-        height: 250px;
+        height: 260px;
         object-fit: cover;
         border-radius: 14px;
         width: 100%;
@@ -1335,42 +1364,42 @@ html, body {
 
     .story-quote {
         font-family: var(--font-serif);
-        font-size: 1.05rem !important;
+        font-size: 1.15rem !important;
         font-style: italic;
         color: var(--color-accent-taupe);
-        margin-bottom: 0.7rem !important;
+        margin-bottom: 0.8rem !important;
         line-height: 1.5;
     }
 
     .story-text {
-        font-size: 0.94rem !important;
-        line-height: 1.65 !important;
+        font-size: 1.02rem !important;
+        line-height: 1.7 !important;
         text-align: center !important;
-        color: var(--color-text-muted) !important;
-        margin-bottom: 0.7rem !important;
+        color: #3A3532 !important;
+        margin-bottom: 0.8rem !important;
     }
 
     .story-footer {
-        font-size: 0.96rem !important;
-        font-weight: 500 !important;
+        font-size: 1.05rem !important;
+        font-weight: 600 !important;
         color: var(--color-text-main) !important;
         margin-bottom: 0.6rem !important;
-        margin-top: 0.4rem !important;
+        margin-top: 0.5rem !important;
         line-height: 1.4;
     }
 
-    /* Venue & Location Section Mobile (LEFT ALIGNED TEXT & COMPACT CARD) */
+    /* Venue & Location Section Mobile (LEFT ALIGNED LARGE TEXT & CARD) */
     .venue-section {
-        padding: 2.2rem 0.6rem;
+        padding: 2.6rem 0.6rem;
     }
 
     .venue-card-wrapper {
-        padding: 1.8rem 1.2rem !important;
+        padding: 2rem 1.3rem !important;
         border-radius: 16px !important;
         text-align: left !important;
         width: 100% !important;
         box-sizing: border-box !important;
-        background: rgba(252, 250, 246, 0.88) !important;
+        background: rgba(252, 250, 246, 0.9) !important;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
     }
 
@@ -1381,37 +1410,40 @@ html, body {
 
     .venue-details .section-subtitle {
         text-align: left !important;
-        margin-bottom: 0.3rem !important;
+        margin-bottom: 0.4rem !important;
     }
 
     .venue-details .section-title {
         text-align: left !important;
         padding: 0 !important;
-        margin-bottom: 0.6rem !important;
-        font-size: clamp(1.4rem, 5vw, 1.85rem) !important;
+        margin-bottom: 0.7rem !important;
+        font-size: clamp(1.55rem, 5.2vw, 2rem) !important;
     }
 
     .venue-name {
-        font-size: 1.5rem !important;
+        font-size: 1.6rem !important;
         margin-bottom: 0.4rem !important;
         line-height: 1.25 !important;
         text-align: left !important;
+        font-weight: 600 !important;
     }
 
     .venue-address {
-        font-size: 0.9rem !important;
+        font-size: 0.96rem !important;
         justify-content: flex-start !important;
         text-align: left !important;
-        margin-bottom: 0.6rem !important;
+        margin-bottom: 0.7rem !important;
         line-height: 1.4 !important;
+        font-weight: 500 !important;
     }
 
     .venue-info {
-        font-size: 0.92rem !important;
-        line-height: 1.6 !important;
-        margin-bottom: 1rem !important;
+        font-size: 1.02rem !important;
+        line-height: 1.65 !important;
+        margin-bottom: 1.2rem !important;
         padding: 0 !important;
         text-align: left !important;
+        color: #3A3532 !important;
     }
 
     .venue-buttons {
@@ -1425,52 +1457,52 @@ html, body {
         align-items: center !important;
         justify-content: center !important;
         width: 100% !important;
-        max-width: 290px !important;
-        min-height: 46px !important;
-        padding: 0.8rem 1.3rem !important;
-        font-size: 0.78rem !important;
+        max-width: 300px !important;
+        min-height: 48px !important;
+        padding: 0.85rem 1.4rem !important;
+        font-size: 0.82rem !important;
         letter-spacing: 0.08em !important;
         border-radius: 30px !important;
         line-height: 1.4 !important;
         margin: 0 !important;
+        font-weight: 600 !important;
     }
 
     .venue-image {
         width: 100% !important;
-        margin-top: 0.6rem !important;
+        margin-top: 0.8rem !important;
     }
 
     .venue-img {
-        height: 210px !important;
+        height: 220px !important;
         object-fit: cover !important;
         width: 100% !important;
         border-radius: 14px !important;
     }
 
-
-
     /* Footer Mobile */
     .footer {
-        padding: 2.2rem 0.8rem 1.8rem;
+        padding: 2.5rem 0.8rem 2rem;
     }
 
     .footer-names {
-        font-size: 1.9rem;
+        font-size: 2.1rem;
         margin-bottom: 0.4rem;
         line-height: 1.2;
     }
 
     .footer-date {
-        font-size: 0.72rem;
+        font-size: 0.82rem;
         margin-bottom: 0.4rem;
         line-height: 1.4;
     }
 
     .footer-copy {
-        font-size: 0.78rem;
+        font-size: 0.88rem;
         margin-bottom: 0.5rem;
         line-height: 1.5;
     }
+ }
 }
 
 /* Ultra Small Mobile Screens (iPhone SE <= 360px) */
