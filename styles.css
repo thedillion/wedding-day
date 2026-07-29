@@ -1163,7 +1163,7 @@ html, body {
 }
 
 /* ==========================================================================
-   MOBILE & RESPONSIVE DESIGN (ZERO OVERFLOW & PERFECT TEXT FITTING)
+   MOBILE & RESPONSIVE DESIGN (PERFECT FITTING & COMPACT TYPOGRAPHY)
    ========================================================================== */
 @media (max-width: 992px) {
     .container {
@@ -1172,21 +1172,16 @@ html, body {
 
     .grid-2-col {
         grid-template-columns: 1fr;
-        gap: 2.5rem;
+        gap: 2rem;
     }
 
     .section {
-        padding: 4rem 1rem;
+        padding: 3.5rem 1rem;
     }
 }
 
 @media (max-width: 768px) {
-    /* Prevent any horizontal page scroll */
-    body {
-        overflow-x: hidden;
-    }
-
-    .page-wrapper {
+    body, .page-wrapper {
         overflow-x: hidden;
         width: 100%;
     }
@@ -1198,64 +1193,48 @@ html, body {
         box-sizing: border-box;
     }
 
-    /* Hero Section Mobile Spacing & Fit */
+    /* Hero Section Mobile */
     .hero-section {
-        padding: 2.5rem 0.6rem 1.8rem;
+        padding: 2.2rem 0.6rem 1.5rem;
         min-height: auto;
     }
 
     .card-container {
         width: 100%;
         max-width: 100%;
-        box-sizing: border-box;
     }
 
     .invitation-card {
-        padding: 2.8rem 0.8rem 2.2rem;
+        padding: 2.6rem 0.8rem 2rem;
         border-radius: 16px;
         width: 100%;
-        max-width: 100%;
         box-sizing: border-box;
         overflow: hidden;
-        box-shadow: 
-            0 15px 35px rgba(0, 0, 0, 0.05),
-            inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
 
     .date-vertical-badge {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         letter-spacing: 0.14em;
-        margin-bottom: 1.2rem;
+        margin-bottom: 1.1rem;
     }
 
     .couple-names {
-        font-size: clamp(2.1rem, 7.5vw, 3.2rem);
-        line-height: 1.22;
-        margin-bottom: 0.8rem;
+        font-size: clamp(2rem, 7.5vw, 3rem);
+        line-height: 1.2;
+        margin-bottom: 0.6rem;
         word-break: break-word;
-        overflow-wrap: break-word;
-    }
-
-    .name-mary,
-    .name-tobias {
-        display: inline-block;
     }
 
     .invite-lead {
         font-size: 0.88rem;
-        line-height: 1.55;
-        margin-bottom: 1.4rem;
+        line-height: 1.5;
+        margin-bottom: 1.2rem;
         padding: 0 0.2rem;
-        word-break: break-word;
     }
 
     .event-hero-meta {
-        padding: 1rem 0.2rem;
-        margin-bottom: 1.6rem;
-        width: 100%;
-        box-sizing: border-box;
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
+        padding: 0.9rem 0.2rem;
+        margin-bottom: 1.4rem;
     }
 
     .meta-date {
@@ -1265,7 +1244,7 @@ html, body {
 
     .meta-time {
         font-size: 0.88rem;
-        margin: 0.35rem 0;
+        margin: 0.3rem 0;
     }
 
     .meta-location {
@@ -1274,80 +1253,94 @@ html, body {
     }
 
     .scroll-down-btn {
-        font-size: 0.7rem;
-        padding: 0.55rem 1.1rem;
+        font-size: 0.68rem;
+        padding: 0.5rem 1rem;
     }
 
-    /* Section Subtitle & Titles Mobile */
+    /* Section Subtitle & Titles Mobile (Tight Margins) */
     .section-subtitle {
-        font-size: 1.05rem;
+        font-size: 1rem;
         text-align: center;
-        padding: 0 0.5rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.04em;
     }
 
     .section-title {
-        font-size: clamp(1.5rem, 5vw, 2.1rem);
-        line-height: 1.3;
-        margin-bottom: 1.4rem;
+        font-size: clamp(1.4rem, 4.8vw, 1.8rem) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0.8rem !important;
         text-align: center !important;
-        padding: 0 0.5rem;
-        word-break: break-word;
+        padding: 0 0.3rem;
     }
 
-    /* Countdown Timer Section Mobile Fit (100% Fit, 4 Equal Columns) */
+    /* Countdown Timer Section Mobile Fit (Compact Box + Colons) */
     .countdown-section {
-        padding: 2.8rem 0.6rem;
+        padding: 2.2rem 0.6rem;
     }
 
     .timer-grid {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.35rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 0.25rem !important;
         width: 100% !important;
         max-width: 360px !important;
-        margin: 1.2rem auto 0 !important;
+        margin: 0.9rem auto 0 !important;
         box-sizing: border-box !important;
     }
 
-    .timer-colon {
-        display: none !important;
-    }
-
     .timer-box {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
         min-width: 0 !important;
-        width: 100% !important;
-        padding: 0.75rem 0.2rem !important;
+        flex: 1 !important;
+        max-width: 68px !important;
+        padding: 0.55rem 0.1rem !important;
         border-radius: 10px !important;
+        background: rgba(255, 255, 255, 0.75) !important;
+        border: 1px solid var(--color-border) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03) !important;
         box-sizing: border-box !important;
         text-align: center !important;
     }
 
     .timer-number {
-        font-size: clamp(1.3rem, 4.5vw, 1.8rem) !important;
-        line-height: 1.1 !important;
+        font-size: clamp(1.2rem, 4.5vw, 1.5rem) !important;
+        line-height: 1 !important;
     }
 
     .timer-label {
-        font-size: 0.55rem !important;
+        font-size: 0.52rem !important;
         letter-spacing: 0.04em !important;
-        margin-top: 0.25rem !important;
+        margin-top: 0.2rem !important;
         white-space: nowrap !important;
     }
 
-    /* Welcome / Story Section Mobile */
+    .timer-colon {
+        display: block !important;
+        font-family: var(--font-serif) !important;
+        font-size: 1.1rem !important;
+        color: var(--color-accent-taupe) !important;
+        line-height: 1 !important;
+        margin-bottom: 0.6rem !important;
+        padding: 0 1px !important;
+    }
+
+    /* Welcome / Story Section Mobile (Tight Paragraph Margins) */
     .story-section {
-        padding: 2.8rem 0.6rem;
+        padding: 2.2rem 0.6rem;
     }
 
     .story-image-wrap {
-        max-width: 300px;
+        max-width: 280px;
         margin: 0 auto;
         width: 100%;
-        box-sizing: border-box;
     }
 
     .story-img {
-        height: 260px;
+        height: 240px;
         object-fit: cover;
         border-radius: 14px;
         width: 100%;
@@ -1355,80 +1348,90 @@ html, body {
 
     .story-content {
         text-align: center;
-        padding: 0 0.4rem;
-        box-sizing: border-box;
+        padding: 0 0.3rem;
+    }
+
+    .story-quote {
+        font-family: var(--font-serif);
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--color-accent-taupe);
+        margin-bottom: 0.6rem !important;
+        line-height: 1.4;
     }
 
     .story-text {
-        font-size: 0.9rem;
-        line-height: 1.7;
-        text-align: center;
-        color: var(--color-text-muted);
-        margin-bottom: 0.9rem;
-        word-break: break-word;
+        font-size: 0.88rem !important;
+        line-height: 1.6 !important;
+        text-align: center !important;
+        color: var(--color-text-muted) !important;
+        margin-bottom: 0.6rem !important;
     }
 
-    /* Venue & Location Section Mobile */
+    .story-footer {
+        font-size: 0.9rem !important;
+        font-weight: 500 !important;
+        color: var(--color-text-main) !important;
+        margin-bottom: 0 !important;
+        margin-top: 0.4rem !important;
+    }
+
+    /* Venue & Location Section Mobile (Tight Margins) */
     .venue-section {
-        padding: 2.8rem 0.6rem;
+        padding: 2.2rem 0.6rem;
     }
 
     .venue-card-wrapper {
-        padding: 1.6rem 0.8rem;
+        padding: 1.5rem 0.8rem;
         border-radius: 16px;
         text-align: center;
-        box-sizing: border-box;
-        width: 100%;
     }
 
     .venue-details {
         text-align: center;
-        box-sizing: border-box;
     }
 
     .venue-name {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-        word-break: break-word;
+        font-size: 1.35rem !important;
+        margin-bottom: 0.4rem !important;
+        line-height: 1.25 !important;
     }
 
     .venue-address {
-        font-size: 0.82rem;
-        justify-content: center;
-        margin-bottom: 0.9rem;
-        word-break: break-word;
+        font-size: 0.82rem !important;
+        justify-content: center !important;
+        margin-bottom: 0.6rem !important;
     }
 
     .venue-info {
-        font-size: 0.88rem;
-        line-height: 1.65;
-        margin-bottom: 1.4rem;
+        font-size: 0.86rem !important;
+        line-height: 1.6 !important;
+        margin-bottom: 1rem !important;
         padding: 0 0.2rem;
     }
 
     .venue-buttons {
-        justify-content: center;
+        justify-content: center !important;
     }
 
     .btn-primary {
-        width: 100%;
-        max-width: 290px;
-        justify-content: center;
-        min-height: 46px;
-        padding: 0.85rem 1.2rem;
-        font-size: 0.78rem;
-        letter-spacing: 0.1em;
-        box-sizing: border-box;
+        width: 100% !important;
+        max-width: 270px !important;
+        justify-content: center !important;
+        min-height: 42px !important;
+        padding: 0.75rem 1.2rem !important;
+        font-size: 0.75rem !important;
+        letter-spacing: 0.08em !important;
+        border-radius: 30px !important;
     }
 
     .venue-image {
         width: 100%;
-        margin-top: 1rem;
-        box-sizing: border-box;
+        margin-top: 0.9rem;
     }
 
     .venue-img {
-        height: 200px;
+        height: 190px;
         object-fit: cover;
         border-radius: 14px;
         width: 100%;
@@ -1436,15 +1439,17 @@ html, body {
 
     /* Footer Mobile */
     .footer {
-        padding: 2.8rem 0.8rem 2.2rem;
+        padding: 2.2rem 0.8rem 1.8rem;
     }
 
     .footer-names {
-        font-size: 2rem;
+        font-size: 1.9rem;
+        margin-bottom: 0.3rem;
     }
 
     .footer-date {
         font-size: 0.72rem;
+        margin-bottom: 0.3rem;
     }
 
     .footer-copy {
@@ -1452,40 +1457,46 @@ html, body {
     }
 }
 
-/* Ultra Small Mobile Screens (iPhone SE, Galaxy A-series <= 360px) */
+/* Ultra Small Mobile Screens (iPhone SE <= 360px) */
 @media (max-width: 360px) {
     .invitation-card {
-        padding: 2.4rem 0.6rem 1.8rem;
+        padding: 2.2rem 0.5rem 1.6rem;
     }
 
     .couple-names {
-        font-size: 1.95rem;
+        font-size: 1.85rem;
     }
 
     .timer-grid {
-        gap: 0.25rem !important;
+        gap: 0.15rem !important;
     }
 
     .timer-box {
-        padding: 0.6rem 0.15rem !important;
+        max-width: 60px !important;
+        padding: 0.45rem 0.1rem !important;
     }
 
     .timer-number {
-        font-size: 1.2rem !important;
+        font-size: 1.15rem !important;
     }
 
     .timer-label {
-        font-size: 0.5rem !important;
+        font-size: 0.48rem !important;
+    }
+
+    .timer-colon {
+        font-size: 0.95rem !important;
     }
 
     .story-img {
-        height: 220px;
+        height: 200px;
     }
 
     .venue-img {
-        height: 170px;
+        height: 160px;
     }
 }
+
 
 
 
