@@ -2,9 +2,9 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Azamat & Bernara — Nikoh To'yiga Taklifnoma | 23-Avgust 2026</title>
-    <meta name="description" content="Azamat va Bernaraning nikoh to'yiga taklifnoma. 23-Avgust 2026-yil, 'Shodlik' To'yxonasi.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Azamat & Bernora — Nikoh To'yiga Taklifnoma | 23-Avgust 2026</title>
+    <meta name="description" content="Azamat va Bernoraning nikoh to'yiga taklifnoma. 23-Avgust 2026-yil, 'Shodlik' To'yxonasi.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,11 @@
 </head>
 <body>
 
+    <!-- Preloaded Audio Element -->
+    <audio id="bgAudio" preload="auto" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+
     <!-- LAYER 1: Dynamic Light Flares & Dust Particles Canvas -->
     <canvas id="lightDustCanvas" class="light-dust-canvas"></canvas>
 
@@ -27,6 +32,17 @@
 
     <!-- Floating Background Sunlight Flare -->
     <div class="sun-flare"></div>
+
+    <!-- Ambient Audio Player Toggle -->
+    <div class="audio-control" id="audioToggle" title="Musiqa">
+        <div class="audio-icon">
+            <i class="fas fa-music"></i>
+        </div>
+        <span class="audio-text">Musiqa</span>
+        <div class="sound-wave hidden" id="soundWave">
+            <span></span><span></span><span></span>
+        </div>
+    </div>
 
     <!-- MAIN PARALLAX WRAPPER -->
     <div class="page-wrapper" id="parallaxWrapper">
@@ -64,7 +80,7 @@
                     <h1 class="couple-names">
                         <span class="name-mary">Azamat</span>
                         <span class="ampersand">&</span>
-                        <span class="name-tobias">Bernara</span>
+                        <span class="name-tobias">Bernora</span>
                     </h1>
 
                     <!-- Invitation Lead Text -->
@@ -95,7 +111,6 @@
             <div class="container text-center">
                 <span class="section-subtitle">Baxtli kunimizgacha qolgan vaqt</span>
                 <div class="timer-grid" id="countdownTimer">
-
                     <div class="timer-box">
                         <span class="timer-number" id="days">00</span>
                         <span class="timer-label">kun / days</span>
@@ -180,7 +195,7 @@
              ========================================================================== -->
         <footer class="footer">
             <div class="container text-center">
-                <h3 class="footer-names">Azamat & Bernara</h3>
+                <h3 class="footer-names">Azamat & Bernora</h3>
                 <p class="footer-date">23-Avgust 2026-yil • "Shodlik" To'yxonasi</p>
                 <p class="footer-copy">Sizni bayramimizda kutib qolamiz!</p>
             </div>

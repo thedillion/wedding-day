@@ -1147,8 +1147,15 @@ html, body {
     }
 
     .couple-names .ampersand {
+/* Global Overflow Guard */
+html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    position: relative;
+}
+
 /* ==========================================================================
-   MOBILE & RESPONSIVE DESIGN (REFINED PADDINGS & TEXT BLOCKS)
+   MOBILE & RESPONSIVE DESIGN (ZERO OVERFLOW & PERFECT TEXT FITTING)
    ========================================================================== */
 @media (max-width: 992px) {
     .container {
@@ -1166,34 +1173,59 @@ html, body {
 }
 
 @media (max-width: 768px) {
-    /* Hero Section Mobile Spacing */
+    /* Prevent any horizontal page scroll */
+    body {
+        overflow-x: hidden;
+    }
+
+    .page-wrapper {
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .container {
+        padding: 0 0.8rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Hero Section Mobile Spacing & Fit */
     .hero-section {
-        padding: 3rem 1rem 2rem;
+        padding: 2.5rem 0.6rem 1.8rem;
         min-height: auto;
     }
 
     .card-container {
+        width: 100%;
         max-width: 100%;
+        box-sizing: border-box;
     }
 
     .invitation-card {
-        padding: 3.2rem 1.2rem 2.4rem;
-        border-radius: 18px;
+        padding: 2.8rem 0.8rem 2.2rem;
+        border-radius: 16px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
         box-shadow: 
             0 15px 35px rgba(0, 0, 0, 0.05),
             inset 0 0 0 1px rgba(255, 255, 255, 0.9);
     }
 
     .date-vertical-badge {
-        font-size: 1.35rem;
-        letter-spacing: 0.15em;
-        margin-bottom: 1.4rem;
+        font-size: 1.25rem;
+        letter-spacing: 0.14em;
+        margin-bottom: 1.2rem;
     }
 
     .couple-names {
-        font-size: clamp(2.4rem, 8vw, 3.4rem);
-        line-height: 1.2;
+        font-size: clamp(2.1rem, 7.5vw, 3.2rem);
+        line-height: 1.22;
         margin-bottom: 0.8rem;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
 
     .name-mary,
@@ -1202,142 +1234,168 @@ html, body {
     }
 
     .invite-lead {
-        font-size: 0.92rem;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-        padding: 0 0.5rem;
+        font-size: 0.88rem;
+        line-height: 1.55;
+        margin-bottom: 1.4rem;
+        padding: 0 0.2rem;
+        word-break: break-word;
     }
 
     .event-hero-meta {
-        padding: 1.2rem 0;
-        margin-bottom: 1.8rem;
+        padding: 1rem 0.2rem;
+        margin-bottom: 1.6rem;
+        width: 100%;
+        box-sizing: border-box;
         border-top: 1px solid var(--color-border);
         border-bottom: 1px solid var(--color-border);
     }
 
     .meta-date {
-        font-size: 0.8rem;
-        letter-spacing: 0.14em;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
     }
 
     .meta-time {
-        font-size: 0.92rem;
-        margin: 0.4rem 0;
+        font-size: 0.88rem;
+        margin: 0.35rem 0;
     }
 
     .meta-location {
-        font-size: 0.72rem;
-        letter-spacing: 0.14em;
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
     }
 
     .scroll-down-btn {
-        font-size: 0.72rem;
-        padding: 0.6rem 1.2rem;
+        font-size: 0.7rem;
+        padding: 0.55rem 1.1rem;
     }
 
     /* Section Subtitle & Titles Mobile */
     .section-subtitle {
-        font-size: 1.15rem;
-        text-align: center;
-    }
-
-    .section-title {
-        font-size: clamp(1.6rem, 5.5vw, 2.2rem);
-        line-height: 1.3;
-        margin-bottom: 1.5rem;
-        text-align: center !important;
-    }
-
-    /* Countdown Timer Section Mobile */
-    .countdown-section {
-        padding: 3rem 1rem;
-    }
-
-    .timer-grid {
-        gap: 0.4rem;
-        margin-top: 1.2rem;
-        justify-content: center;
-    }
-
-    .timer-box {
-        min-width: 64px;
-        padding: 0.8rem 0.5rem;
-        border-radius: 12px;
-    }
-
-    .timer-number {
-        font-size: clamp(1.5rem, 5.5vw, 2.2rem);
-    }
-
-    .timer-label {
-        font-size: 0.6rem;
-        letter-spacing: 0.08em;
-    }
-
-    .timer-colon {
-        font-size: 1.5rem;
-        margin-bottom: 1.1rem;
-    }
-
-    /* Welcome / Story Section Mobile */
-    .story-section {
-        padding: 3.2rem 1rem;
-    }
-
-    .story-image-wrap {
-        max-width: 320px;
-        margin: 0 auto;
-    }
-
-    .story-img {
-        height: 280px;
-        object-fit: cover;
-        border-radius: 14px;
-    }
-
-    .story-content {
+        font-size: 1.05rem;
         text-align: center;
         padding: 0 0.5rem;
     }
 
+    .section-title {
+        font-size: clamp(1.5rem, 5vw, 2.1rem);
+        line-height: 1.3;
+        margin-bottom: 1.4rem;
+        text-align: center !important;
+        padding: 0 0.5rem;
+        word-break: break-word;
+    }
+
+    /* Countdown Timer Section Mobile Fit (100% Fit, 4 Equal Columns) */
+    .countdown-section {
+        padding: 2.8rem 0.6rem;
+    }
+
+    .timer-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.35rem !important;
+        width: 100% !important;
+        max-width: 360px !important;
+        margin: 1.2rem auto 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .timer-colon {
+        display: none !important;
+    }
+
+    .timer-box {
+        min-width: 0 !important;
+        width: 100% !important;
+        padding: 0.75rem 0.2rem !important;
+        border-radius: 10px !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+    }
+
+    .timer-number {
+        font-size: clamp(1.3rem, 4.5vw, 1.8rem) !important;
+        line-height: 1.1 !important;
+    }
+
+    .timer-label {
+        font-size: 0.55rem !important;
+        letter-spacing: 0.04em !important;
+        margin-top: 0.25rem !important;
+        white-space: nowrap !important;
+    }
+
+    /* Welcome / Story Section Mobile */
+    .story-section {
+        padding: 2.8rem 0.6rem;
+    }
+
+    .story-image-wrap {
+        max-width: 300px;
+        margin: 0 auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .story-img {
+        height: 260px;
+        object-fit: cover;
+        border-radius: 14px;
+        width: 100%;
+    }
+
+    .story-content {
+        text-align: center;
+        padding: 0 0.4rem;
+        box-sizing: border-box;
+    }
+
     .story-text {
-        font-size: 0.92rem;
-        line-height: 1.75;
+        font-size: 0.9rem;
+        line-height: 1.7;
         text-align: center;
         color: var(--color-text-muted);
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
+        word-break: break-word;
     }
 
     /* Venue & Location Section Mobile */
     .venue-section {
-        padding: 3.2rem 1rem;
+        padding: 2.8rem 0.6rem;
     }
 
     .venue-card-wrapper {
-        padding: 2rem 1.2rem;
-        border-radius: 18px;
+        padding: 1.6rem 0.8rem;
+        border-radius: 16px;
         text-align: center;
+        box-sizing: border-box;
+        width: 100%;
     }
 
     .venue-details {
         text-align: center;
+        box-sizing: border-box;
     }
 
     .venue-name {
-        font-size: 1.6rem;
-        margin-bottom: 0.6rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        word-break: break-word;
     }
 
     .venue-address {
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         justify-content: center;
-        margin-bottom: 1rem;
+        margin-bottom: 0.9rem;
+        word-break: break-word;
     }
 
     .venue-info {
-        font-size: 0.9rem;
-        line-height: 1.7;
-        margin-bottom: 1.6rem;
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin-bottom: 1.4rem;
+        padding: 0 0.2rem;
     }
 
     .venue-buttons {
@@ -1346,73 +1404,80 @@ html, body {
 
     .btn-primary {
         width: 100%;
-        max-width: 300px;
+        max-width: 290px;
         justify-content: center;
-        min-height: 48px;
-        padding: 0.9rem 1.4rem;
-        font-size: 0.8rem;
-        letter-spacing: 0.12em;
+        min-height: 46px;
+        padding: 0.85rem 1.2rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.1em;
+        box-sizing: border-box;
     }
 
     .venue-image {
         width: 100%;
         margin-top: 1rem;
+        box-sizing: border-box;
     }
 
     .venue-img {
-        height: 220px;
+        height: 200px;
         object-fit: cover;
         border-radius: 14px;
+        width: 100%;
     }
 
     /* Footer Mobile */
     .footer {
-        padding: 3rem 1rem 2.5rem;
+        padding: 2.8rem 0.8rem 2.2rem;
     }
 
     .footer-names {
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .footer-date {
-        font-size: 0.75rem;
+        font-size: 0.72rem;
     }
 
     .footer-copy {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
     }
 }
 
-/* Ultra Small Mobile Screens (iPhone SE, Galaxy A-series <= 375px) */
-@media (max-width: 375px) {
+/* Ultra Small Mobile Screens (iPhone SE, Galaxy A-series <= 360px) */
+@media (max-width: 360px) {
     .invitation-card {
-        padding: 2.6rem 1rem 2rem;
+        padding: 2.4rem 0.6rem 1.8rem;
     }
 
     .couple-names {
-        font-size: 2.2rem;
-    }
-
-    .timer-colon {
-        display: none;
+        font-size: 1.95rem;
     }
 
     .timer-grid {
-        gap: 0.5rem;
+        gap: 0.25rem !important;
     }
 
     .timer-box {
-        min-width: 56px;
-        padding: 0.6rem 0.4rem;
+        padding: 0.6rem 0.15rem !important;
+    }
+
+    .timer-number {
+        font-size: 1.2rem !important;
+    }
+
+    .timer-label {
+        font-size: 0.5rem !important;
     }
 
     .story-img {
-        height: 240px;
+        height: 220px;
     }
 
     .venue-img {
-        height: 190px;
+        height: 170px;
     }
 }
+
 
 

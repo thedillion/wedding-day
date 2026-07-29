@@ -333,13 +333,98 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (modalClose) {
-        modalClose.addEventListener('click', () => {
-            if (successModal) successModal.classList.remove('active');
-        });
+    // ----------------------------------------------------------------------
+    // 7. CUSTOM MP3 AUDIO PLAYER (music.mp3)
+    // Starts upon first scroll gesture from 29th second with smooth volume fade-in
+    // ----------------------------------------------------------------------
+    const audioToggle = document.getElementById('audioToggle');
+    const soundWave = document.getElementById('soundWave');
+    const bgAudio = document.getElementById('bgAudio') || new Audio('assets/music.mp3');
+
+    bgAudio.loop = true;
+    let isPlaying = false;
+    let fadeInterval = null;
+
+    function playMusicWithFadeIn() {
+        if (isPlaying) return;
+
+        // Set start position to 29 seconds as requested
+        if (bgAudio.currentTime < 29 || bgAudio.paused) {
+            bgAudio.currentTime = 29;
+        }
+
+        bgAudio.volume = 0;
+        const playPromise = bgAudio.play();
+
+        if (playPromise !== undefined) {
+            playPromise.then(() => {
+                isPlaying = true;
+                if (soundWave) soundWave.classList.remove('hidden');
+                if (audioToggle) audioToggle.style.borderColor = 'var(--color-accent-taupe)';
+
+                // Smooth volume fade-in from 0 to 0.75 over 2.5 seconds
+                let currentVol = 0;
+                if (fadeInterval) clearInterval(fadeInterval);
+                fadeInterval = setInterval(() => {
+                    if (currentVol < 0.75) {
+                        currentVol += 0.03;
+                        bgAudio.volume = Math.min(currentVol, 0.75);
+                    } else {
+                        clearInterval(fadeInterval);
+                    }
+                }, 100);
+            }).catch(err => {
+                console.log('Scroll audio trigger caught by browser policy:', err);
+            });
+        }
     }
 
+    function pauseMusic() {
+        isPlaying = false;
+        if (fadeInterval) clearInterval(fadeInterval);
+
+        let currentVol = bgAudio.volume;
+        fadeInterval = setInterval(() => {
+            if (currentVol > 0.05) {
+                currentVol -= 0.05;
+                bgAudio.volume = Math.max(currentVol, 0);
+            } else {
+                bgAudio.pause();
+                bgAudio.volume = 0;
+                clearInterval(fadeInterval);
+                if (soundWave) soundWave.classList.add('hidden');
+                if (audioToggle) audioToggle.style.borderColor = 'var(--color-border)';
+            }
+        }, 50);
+    }
+
+    // Scroll Trigger Handler — Starts music strictly upon first scroll or gesture
+    const scrollAudioHandler = () => {
+        if (!isPlaying) {
+            playMusicWithFadeIn();
+        }
+    };
+
+    // Attach listeners for first scroll / touch gesture
+    window.addEventListener('scroll', scrollAudioHandler);
+    document.addEventListener('scroll', scrollAudioHandler);
+    document.addEventListener('wheel', scrollAudioHandler);
+    document.addEventListener('touchstart', scrollAudioHandler);
+    document.addEventListener('click', scrollAudioHandler);
+
+    // Manual Audio Toggle Button (top right)
+    if (audioToggle) {
+        audioToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isPlaying) {
+                pauseMusic();
+            } else {
+                playMusicWithFadeIn();
+            }
+        });
+    }
 });
+
 
 
 
