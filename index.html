@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=4">
+    <link rel="stylesheet" href="styles.css?v=30">
 </head>
 <body>
 
@@ -158,7 +158,7 @@
             <div class="container grid-2-col align-center reveal">
                 <div class="story-image-wrap">
                     <div class="image-frame">
-                        <img src="assets/images/rings.jpg" alt="Nikoh uzuklari" class="story-img">
+                        <img src="assets/images/welcome_couple.jpg" alt="Kuyov va Kelin" class="story-img">
                     </div>
                 </div>
                 <div class="story-content">
@@ -195,10 +195,27 @@
                             </a>
                         </div>
                     </div>
-                    <div class="venue-image">
-                        <img src="assets/images/venue.png" alt="'Shodlik' To'yxonasi" class="venue-img">
-                    </div>
 
+                    <div class="venue-image">
+                        <div class="venue-photo-slider" id="venueSlider">
+                            <img src="assets/images/venue.png" alt="Shodlik To'yxonasi" class="venue-active-img" id="venueActiveImg">
+                            <button class="fullscreen-trigger" id="fullscreenBtn" aria-label="To'liq ekranda ko'rish" title="To'liq ekranda ko'rish">
+                                <i class="fas fa-expand"></i> <span data-i18n="enlarge_btn">Kattalashtirish</span>
+                            </button>
+                            <div class="slider-badge" id="sliderBadge">1 / 7</div>
+                            <button class="slider-arrow arrow-prev" id="sliderPrev" aria-label="Oldingi foto"><i class="fas fa-chevron-left"></i></button>
+                            <button class="slider-arrow arrow-next" id="sliderNext" aria-label="Keyingi foto"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="venue-thumbnails" id="venueThumbnails">
+                            <button class="thumb-item active" data-index="0" aria-label="Foto 1"><img src="assets/images/venue.png" alt="To'yxona foto 1"></button>
+                            <button class="thumb-item" data-index="1" aria-label="Foto 2"><img src="assets/images/1.jpeg" alt="To'yxona foto 2"></button>
+                            <button class="thumb-item" data-index="2" aria-label="Foto 3"><img src="assets/images/2.jpeg" alt="To'yxona foto 3"></button>
+                            <button class="thumb-item" data-index="3" aria-label="Foto 4"><img src="assets/images/3.jpeg" alt="To'yxona foto 4"></button>
+                            <button class="thumb-item" data-index="4" aria-label="Foto 5"><img src="assets/images/4.jpeg" alt="To'yxona foto 5"></button>
+                            <button class="thumb-item" data-index="5" aria-label="Foto 6"><img src="assets/images/5.jpeg" alt="To'yxona foto 6"></button>
+                            <button class="thumb-item" data-index="6" aria-label="Foto 7"><img src="assets/images/6.jpeg" alt="To'yxona foto 7"></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -216,7 +233,20 @@
 
     </div>
 
+    <!-- Fullscreen Lightbox Gallery Modal -->
+    <div class="fullscreen-gallery-modal" id="fullscreenGalleryModal" style="display: none;" aria-hidden="true">
+        <button class="fullscreen-close-btn" id="fullscreenCloseBtn" aria-label="Yopish / Orqaga">
+            <i class="fas fa-arrow-left"></i> <span>Orqaga</span>
+        </button>
+        <div class="fullscreen-counter" id="fullscreenCounter">1 / 7</div>
+        <div class="fullscreen-img-wrapper" id="fullscreenImgWrapper">
+            <img src="assets/images/venue.png" alt="To'yxona fotosi" class="fullscreen-main-img" id="fullscreenMainImg">
+        </div>
+        <button class="fullscreen-arrow fs-prev" id="fsPrev" aria-label="Oldingi"><i class="fas fa-chevron-left"></i></button>
+        <button class="fullscreen-arrow fs-next" id="fsNext" aria-label="Keyingi"><i class="fas fa-chevron-right"></i></button>
+    </div>
+
     <!-- JavaScript -->
-    <script src="script.js?v=4"></script>
+    <script src="script.js?v=30"></script>
 </body>
 </html>

@@ -42,56 +42,58 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
 
     // ----------------------------------------------------------------------
-    // 2. SCROLL REVEAL OBSERVER
+    // 2. SCROLL REVEAL OBSERVER WITH SAFE FALLBACK
     // ----------------------------------------------------------------------
     const revealElements = document.querySelectorAll('.reveal');
-    const observerOptions = {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-    };
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+    
+    function revealAllVisible() {
+        revealElements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight + 150) {
+                el.classList.add('active');
             }
         });
-    }, observerOptions);
+    }
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '100px 0px 100px 0px'
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    }
+
+    // Safety fallbacks: Immediate check and scroll listener
+    revealAllVisible();
+    window.addEventListener('scroll', revealAllVisible, { passive: true });
+    setTimeout(revealAllVisible, 300);
+    setTimeout(revealAllVisible, 1000);
+
 
     // ----------------------------------------------------------------------
-    // 3. AUTOMATIC SMOOTH PARALLAX & 3D FLOATING ENGINE
+    // 3. ELEGANT FLOATING ANIMATION ENGINE (Gentle float without mouse tilt)
     // ----------------------------------------------------------------------
     const heroCard = document.getElementById('heroCard');
     const cardShadow = document.getElementById('cardShadow');
     const decorLayer = document.getElementById('decorLayer');
 
-    let mouseX = 0, mouseY = 0;
-    let targetX = 0, targetY = 0;
     let autoTime = 0;
     let scrollSpeedFactor = 1.0;
     let lastScrollY = window.scrollY;
 
-    document.addEventListener('mousemove', (e) => {
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-
-        mouseX = (e.clientX - windowWidth / 2) / (windowWidth / 2);
-        mouseY = (e.clientY - windowHeight / 2) / (windowHeight / 2);
-    });
-
-    window.addEventListener('deviceorientation', (e) => {
-        if (e.gamma !== null && e.beta !== null) {
-            mouseX = Math.min(Math.max(e.gamma / 30, -1), 1);
-            mouseY = Math.min(Math.max((e.beta - 45) / 30, -1), 1);
-        }
-    });
-
     window.addEventListener('scroll', () => {
         const currentScroll = window.scrollY;
         const delta = Math.abs(currentScroll - lastScrollY);
-        scrollSpeedFactor = Math.min(1.0 + delta * 0.15, 4.0);
+        scrollSpeedFactor = Math.min(1.0 + delta * 0.15, 3.0);
         lastScrollY = currentScroll;
 
         clearTimeout(window.scrollTimer);
@@ -100,41 +102,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 150);
     });
 
-    function animateParallax() {
-        autoTime += 0.015;
-
-        targetX += (mouseX - targetX) * 0.05;
-        targetY += (mouseY - targetY) * 0.05;
-
-        const autoFloatX = Math.sin(autoTime * 0.8) * 6;
-        const autoFloatY = Math.cos(autoTime * 0.6) * 8;
-        const autoRotateX = Math.sin(autoTime * 0.5) * 2.5;
-        const autoRotateY = Math.cos(autoTime * 0.7) * 2.5;
+    function animateFloating() {
+        autoTime += 0.012;
+        const autoFloatX = Math.sin(autoTime * 0.8) * 4;
+        const autoFloatY = Math.cos(autoTime * 0.6) * 6;
 
         if (heroCard) {
-            const finalRotateX = autoRotateX + (-targetY * 7);
-            const finalRotateY = autoRotateY + (targetX * 7);
-            const finalTranslateX = autoFloatX + (targetX * 12);
-            const finalTranslateY = autoFloatY + (targetY * 12);
-
-            heroCard.style.transform = `translate3d(${finalTranslateX}px, ${finalTranslateY}px, 0px) rotateX(${finalRotateX}deg) rotateY(${finalRotateY}deg)`;
+            heroCard.style.transform = `translate3d(${autoFloatX}px, ${autoFloatY}px, 0px)`;
         }
-
         if (cardShadow) {
-            const shadowX = -autoFloatX * 0.5 + (-targetX * 15);
-            const shadowY = -autoFloatY * 0.5 + (-targetY * 15);
-            cardShadow.style.transform = `translate3d(${shadowX}px, ${shadowY}px, 0px)`;
+            cardShadow.style.transform = `translate3d(${-autoFloatX * 0.5}px, ${-autoFloatY * 0.5}px, 0px)`;
         }
-
         if (decorLayer) {
-            const decorX = autoFloatX * 1.5 + (targetX * 22);
-            const decorY = autoFloatY * 1.5 + (targetY * 22);
-            decorLayer.style.transform = `translate3d(${decorX}px, ${decorY}px, 0px)`;
+            decorLayer.style.transform = `translate3d(${autoFloatX * 0.8}px, ${autoFloatY * 0.8}px, 0px)`;
         }
-
-        requestAnimationFrame(animateParallax);
+        requestAnimationFrame(animateFloating);
     }
-    animateParallax();
+    animateFloating();
 
 
 
@@ -453,6 +437,8 @@ document.addEventListener('DOMContentLoaded', () => {
             location_address: "\"Shodlik\" To'yxonasi, Urganch / Xorazm",
             location_info: "Muhtasham va shinam to'yxona majmuasi. Barcha mehmonlarimiz uchun qulay avtoturargoh va barcha zaruriy sharoitlar mavjud.",
             location_btn: "Google Maps / Xaritadan ko'rish",
+            enlarge_btn: "Kattalashtirish",
+            gallery_title: "To'yxona ko'rinishlari va Fotogalereya",
             footer_date: "23-Avgust 2026-yil • \"Shodlik\" To'yxonasi",
             footer_copy: "Sizni bayramimizda kutib qolamiz!"
         },
@@ -480,6 +466,8 @@ document.addEventListener('DOMContentLoaded', () => {
             location_address: "\"Shodlik\" Wedding Hall, Urgench / Khorezm",
             location_info: "A grand and elegant venue. Ample guest parking and all modern amenities available.",
             location_btn: "View on Google Maps",
+            enlarge_btn: "Enlarge",
+            gallery_title: "Venue Photo Gallery",
             footer_date: "August 23, 2026 • \"Shodlik\" Wedding Hall",
             footer_copy: "We look forward to celebrating together!"
         },
@@ -507,6 +495,8 @@ document.addEventListener('DOMContentLoaded', () => {
             location_address: "우르겐치 / 호рез름 주, \"Shodlik\" (쇼들리크) 예식장",
             location_info: "화려하고 편안한 연회장. 편리한 주차 시설과 쾌적한 편의 시설이 완비되어 있습니다.",
             location_btn: "Google Maps 지도로 보기",
+            enlarge_btn: "확대보기",
+            gallery_title: "예식장 갤러리",
             footer_date: "2026년 8월 23일 • \"Shodlik\" (쇼들리크) Wedding Hall",
             footer_copy: "감사하는 마음으로 기쁘게 모시겠습니다."
         }
@@ -577,7 +567,300 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize Language from localStorage or default 'uz'
     const savedLang = localStorage.getItem('wedding_lang_pref') || 'uz';
     applyLanguage(savedLang);
+
+    // ----------------------------------------------------------------------
+    // 9. IN-CARD VENUE PHOTO SLIDER & FULLSCREEN LIGHTBOX GALLERY LOGIC
+    // ----------------------------------------------------------------------
+    const venueSlider = document.getElementById('venueSlider');
+    const venueActiveImg = document.getElementById('venueActiveImg');
+    const sliderPrev = document.getElementById('sliderPrev');
+    const sliderNext = document.getElementById('sliderNext');
+    const sliderBadge = document.getElementById('sliderBadge');
+    const fullscreenBtn = document.getElementById('fullscreenBtn');
+
+    const fullscreenModal = document.getElementById('fullscreenGalleryModal');
+    const fullscreenMainImg = document.getElementById('fullscreenMainImg');
+    const fullscreenCloseBtn = document.getElementById('fullscreenCloseBtn');
+    const fullscreenCounter = document.getElementById('fullscreenCounter');
+    const fsPrev = document.getElementById('fsPrev');
+    const fsNext = document.getElementById('fsNext');
+
+    const venuePhotos = [
+        'assets/images/venue.png',
+        'assets/images/1.jpeg',
+        'assets/images/2.jpeg',
+        'assets/images/3.jpeg',
+        'assets/images/4.jpeg',
+        'assets/images/5.jpeg',
+        'assets/images/6.jpeg'
+    ];
+    const totalSlides = venuePhotos.length;
+    let currentIndex = 0;
+    let autoSlideTimer = null;
+
+    function updateSlider() {
+        if (venueActiveImg) {
+            venueActiveImg.style.opacity = '0.3';
+            setTimeout(() => {
+                venueActiveImg.src = venuePhotos[currentIndex];
+                venueActiveImg.style.opacity = '1';
+            }, 120);
+        }
+        if (sliderBadge) {
+            sliderBadge.innerText = `${currentIndex + 1} / ${totalSlides}`;
+        }
+        if (fullscreenMainImg) {
+            fullscreenMainImg.src = venuePhotos[currentIndex];
+        }
+        if (fullscreenCounter) {
+            fullscreenCounter.innerText = `${currentIndex + 1} / ${totalSlides}`;
+        }
+
+        // Update active thumbnail item and scroll thumbnail container ONLY
+        const thumbItems = document.querySelectorAll('.thumb-item');
+        const venueThumbnails = document.getElementById('venueThumbnails');
+        thumbItems.forEach((thumb, idx) => {
+            if (idx === currentIndex) {
+                thumb.classList.add('active');
+                if (venueThumbnails) {
+                    const targetLeft = thumb.offsetLeft - (venueThumbnails.clientWidth / 2) + (thumb.clientWidth / 2);
+                    venueThumbnails.scrollTo({ left: targetLeft, behavior: 'smooth' });
+                }
+            } else {
+                thumb.classList.remove('active');
+            }
+        });
+    }
+
+    // Attach click listeners to thumbnails
+    const thumbItems = document.querySelectorAll('.thumb-item');
+    thumbItems.forEach((thumb) => {
+        thumb.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const index = parseInt(thumb.getAttribute('data-index'), 10);
+            if (!isNaN(index)) {
+                currentIndex = index;
+                updateSlider();
+            }
+        });
+    });
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    }
+
+    if (sliderNext) sliderNext.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
+    if (sliderPrev) sliderPrev.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+
+    // Fullscreen Gallery Modal Functions
+    function openFullscreenGallery() {
+        if (!fullscreenModal) return;
+        updateSlider();
+        fullscreenModal.style.display = 'flex';
+        setTimeout(() => {
+            fullscreenModal.classList.add('active');
+        }, 10);
+        fullscreenModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden'; // Lock background scroll
+        stopAutoSlide();
+
+        // Native Browser Fullscreen Request
+        const el = fullscreenModal;
+        if (el.requestFullscreen) {
+            el.requestFullscreen().catch(() => {});
+        } else if (el.webkitRequestFullscreen) {
+            el.webkitRequestFullscreen();
+        } else if (el.msRequestFullscreen) {
+            el.msRequestFullscreen();
+        }
+    }
+
+    function closeFullscreenGallery() {
+        if (!fullscreenModal) return;
+
+        // Exit Native Browser Fullscreen if active
+        if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(() => {});
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+        }
+
+        fullscreenModal.classList.remove('active');
+        fullscreenModal.setAttribute('aria-hidden', 'true');
+        setTimeout(() => {
+            fullscreenModal.style.display = 'none';
+        }, 300);
+        document.body.style.overflow = ''; // Restore background scroll
+        startAutoSlide();
+    }
+
+    if (fullscreenBtn) {
+        ['click', 'mousedown', 'touchstart'].forEach(evtType => {
+            fullscreenBtn.addEventListener(evtType, (e) => {
+                e.stopPropagation();
+                if (evtType === 'click') {
+                    openFullscreenGallery();
+                }
+            });
+        });
+    }
+
+    if (venueSlider) {
+        venueSlider.addEventListener('click', (e) => {
+            // Open full screen if user clicks photo area (excluding arrow buttons and fullscreen button)
+            if (!e.target.closest('.slider-arrow') && !e.target.closest('.fullscreen-trigger')) {
+                openFullscreenGallery();
+            }
+        });
+    }
+
+    if (fullscreenCloseBtn) {
+        fullscreenCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeFullscreenGallery();
+        });
+    }
+
+    if (fullscreenModal) {
+        fullscreenModal.addEventListener('click', (e) => {
+            if (e.target === fullscreenModal || e.target.id === 'fullscreenImgWrapper') {
+                closeFullscreenGallery();
+            }
+        });
+    }
+
+    if (fsNext) fsNext.addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
+    if (fsPrev) fsPrev.addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+
+    document.addEventListener('keydown', (e) => {
+        if (fullscreenModal && fullscreenModal.classList.contains('active')) {
+            if (e.key === 'Escape') closeFullscreenGallery();
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        }
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && fullscreenModal && fullscreenModal.classList.contains('active')) {
+            closeFullscreenGallery();
+        }
+    });
+    document.addEventListener('webkitfullscreenchange', () => {
+        if (!document.webkitFullscreenElement && fullscreenModal && fullscreenModal.classList.contains('active')) {
+            closeFullscreenGallery();
+        }
+    });
+
+    // Touch Swipe Event Listeners for In-Card Slider
+    let startX = 0;
+    let endX = 0;
+    let isDragging = false;
+
+    if (venueSlider) {
+        venueSlider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            endX = e.touches[0].clientX;
+            isDragging = true;
+            stopAutoSlide();
+        }, { passive: true });
+
+        venueSlider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            endX = e.touches[0].clientX;
+        }, { passive: true });
+
+        venueSlider.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            const diffX = startX - endX;
+            if (Math.abs(diffX) > 35) {
+                if (diffX > 0) nextSlide();
+                else prevSlide();
+            }
+            startX = 0;
+            endX = 0;
+            startAutoSlide();
+        });
+
+        venueSlider.addEventListener('mousedown', (e) => {
+            startX = e.clientX;
+            endX = e.clientX;
+            isDragging = true;
+            stopAutoSlide();
+        });
+
+        venueSlider.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            endX = e.clientX;
+        });
+
+        venueSlider.addEventListener('mouseup', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            const diffX = startX - endX;
+            if (Math.abs(diffX) > 35) {
+                if (diffX > 0) nextSlide();
+                else prevSlide();
+            }
+            startX = 0;
+            endX = 0;
+            startAutoSlide();
+        });
+    }
+
+    // Touch Swipe Event Listeners for Fullscreen Modal
+    let fsStartX = 0;
+    let fsEndX = 0;
+
+    if (fullscreenModal) {
+        fullscreenModal.addEventListener('touchstart', (e) => {
+            fsStartX = e.touches[0].clientX;
+            fsEndX = e.touches[0].clientX;
+        }, { passive: true });
+
+        fullscreenModal.addEventListener('touchmove', (e) => {
+            fsEndX = e.touches[0].clientX;
+        }, { passive: true });
+
+        fullscreenModal.addEventListener('touchend', () => {
+            const diffX = fsStartX - fsEndX;
+            if (Math.abs(diffX) > 40) {
+                if (diffX > 0) nextSlide();
+                else prevSlide();
+            }
+            fsStartX = 0;
+            fsEndX = 0;
+        });
+    }
+
+    function startAutoSlide() {
+        if (autoSlideTimer) clearInterval(autoSlideTimer);
+        autoSlideTimer = setInterval(nextSlide, 4500);
+    }
+
+    function stopAutoSlide() {
+        if (autoSlideTimer) clearInterval(autoSlideTimer);
+    }
+
+    if (venueSlider) {
+        venueSlider.addEventListener('mouseenter', stopAutoSlide);
+        venueSlider.addEventListener('mouseleave', startAutoSlide);
+        startAutoSlide();
+    }
+
+
 });
+
 
 
 
